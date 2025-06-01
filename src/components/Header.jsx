@@ -26,28 +26,28 @@ const Header = () => {
     {
       category: "Tax Services",
       items: [
-        { name: "GST Registration & Returns", path: "/services/gst" },
-        { name: "Income Tax Filing", path: "/services/income-tax" },
-        { name: "Tax Planning & Advisory", path: "/services/income-tax" },
-        { name: "Tax Audit Services", path: "/services/income-tax" }
+        { name: "GST Registration & Returns", path: "/services/gst", description: "Complete GST solutions" },
+        { name: "Income Tax Filing", path: "/services/income-tax", description: "Individual & business ITR" },
+        { name: "Tax Planning & Advisory", path: "/services/tax-planning", description: "Strategic tax planning" },
+        { name: "Tax Audit Services", path: "/services/tax-audit", description: "Statutory & internal audits" }
       ]
     },
     {
-      category: "Business Services", 
+      category: "Business Registration",
       items: [
-        { name: "Company Registration", path: "/services/company-registration" },
-        { name: "Partnership Firm", path: "/services/company-registration" },
-        { name: "LLP Registration", path: "/services/company-registration" },
-        { name: "ROC Filing", path: "/services/company-registration" }
+        { name: "Company Registration", path: "/services/company-registration", description: "Private Limited & Public" },
+        { name: "Partnership Firm", path: "/services/partnership-firm", description: "Partnership registration" },
+        { name: "LLP Registration", path: "/services/llp-registration", description: "Limited Liability Partnership" },
+        { name: "ROC Filing Services", path: "/services/roc-filing", description: "Annual & event-based filings" }
       ]
     },
     {
-      category: "Compliance",
+      category: "Compliance & Legal",
       items: [
-        { name: "PF & ESIC Services", path: "/services/compliance" },
-        { name: "Labour Department", path: "/services/compliance" },
-        { name: "Annual Compliance", path: "/services/compliance" },
-        { name: "Statutory Audit", path: "/services/compliance" }
+        { name: "PF & ESIC Services", path: "/services/pf-esic", description: "Employee benefits compliance" },
+        { name: "Labour Department", path: "/services/labour-department", description: "Labour law compliance" },
+        { name: "Compliance Services", path: "/services/compliance", description: "Annual compliance management" },
+        { name: "Statutory Audit", path: "/services/statutory-audit", description: "Professional audit services" }
       ]
     }
   ];
@@ -98,7 +98,7 @@ const Header = () => {
                     SM Accounting Solution
                   </span>
                   <span className="text-xs text-secondary-600 font-medium">
-                    Proprietor: [Owner Name]
+                    Your Trusted Tax & Business Partner
                   </span>
                 </div>
               </Link>
@@ -140,7 +140,7 @@ const Header = () => {
                     )}
                   </motion.div>
                   
-                  {/* Services Dropdown */}
+                  {/* Services Mega Dropdown */}
                   <AnimatePresence>
                     {item.hasDropdown && activeDropdown === item.name && (
                       <motion.div
@@ -148,37 +148,59 @@ const Header = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 w-96 bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden"
+                        className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden z-50"
+                        style={{ transform: 'translateX(-50%)' }}
                       >
-                        <div className="grid grid-cols-1 gap-6 p-6">
-                          {services.map((service, idx) => (
-                            <div key={idx} className="space-y-3">
-                              <h4 className="font-semibold text-secondary-900 text-sm">
-                                {service.category}
-                              </h4>
-                              <ul className="space-y-2">
-                                {service.items.map((serviceItem, serviceIdx) => (
-                                  <li key={serviceIdx}>
-                                    <Link
-                                      to={serviceItem.path}
-                                      className="text-secondary-600 hover:text-primary-600 transition-colors duration-200 text-sm block py-1"
-                                      onClick={() => setActiveDropdown(null)}
-                                    >
-                                      {serviceItem.name}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
+                        <div className="p-8">
+                          <div className="grid grid-cols-3 gap-8">
+                            {services.map((service, idx) => (
+                              <div key={idx} className="space-y-4">
+                                <h4 className="font-bold text-secondary-900 text-lg border-b border-neutral-200 pb-2">
+                                  {service.category}
+                                </h4>
+                                <ul className="space-y-3">
+                                  {service.items.map((serviceItem, serviceIdx) => (
+                                    <li key={serviceIdx}>
+                                      <Link
+                                        to={serviceItem.path}
+                                        className="block text-secondary-600 hover:text-primary-600 transition-colors duration-200 group"
+                                        onClick={() => setActiveDropdown(null)}
+                                      >
+                                        <div className="font-medium text-sm group-hover:text-primary-600 mb-1">
+                                          {serviceItem.name}
+                                        </div>
+                                        <div className="text-xs text-secondary-500 group-hover:text-primary-500">
+                                          {serviceItem.description}
+                                        </div>
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          <div className="mt-8 pt-6 border-t border-neutral-200 flex items-center justify-between">
+                            <div>
+                              <h5 className="font-semibold text-secondary-900 mb-1">Need help choosing?</h5>
+                              <p className="text-sm text-secondary-600">Speak with our experts to find the right service for your needs.</p>
                             </div>
-                          ))}
-                          <div className="mt-4 pt-4 border-t border-neutral-200">
-                            <Link
-                              to="/services"
-                              className="block text-center bg-primary-50 text-primary-700 px-4 py-2 rounded-lg hover:bg-primary-100 transition-colors font-medium"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              View All Services
-                            </Link>
+                            <div className="flex space-x-3">
+                              <Link
+                                to="/services"
+                                className="bg-primary-50 text-primary-700 px-4 py-2 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                View All Services
+                              </Link>
+                              <Link
+                                to="/contact"
+                                className="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors font-medium text-sm"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                Get Consultation
+                              </Link>
+                            </div>
                           </div>
                         </div>
                       </motion.div>
@@ -221,10 +243,11 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-white z-40 lg:hidden"
+            className="fixed inset-0 bg-white z-40 lg:hidden overflow-y-auto"
           >
-            <div className="flex flex-col pt-20 px-4">
-              {navigationItems.map((item, index) => (
+            <div className="flex flex-col pt-20 px-4 pb-6">
+              {/* Mobile Navigation Items */}
+              {navigationItems.filter(item => !item.hasDropdown).map((item, index) => (
                 <motion.div
                   key={item.name}
                   initial={{ x: -50, opacity: 0 }}
@@ -245,17 +268,56 @@ const Header = () => {
                 </motion.div>
               ))}
               
+              {/* Mobile Services Section */}
+              <motion.div
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="py-4 border-b border-neutral-200"
+              >
+                <h3 className="text-lg font-medium text-secondary-900 mb-4">Our Services</h3>
+                {services.map((category, categoryIndex) => (
+                  <div key={categoryIndex} className="mb-6">
+                    <h4 className="font-semibold text-secondary-800 mb-3 text-base">
+                      {category.category}
+                    </h4>
+                    <div className="space-y-2 ml-4">
+                      {category.items.map((serviceItem, serviceIndex) => (
+                        <Link
+                          key={serviceIndex}
+                          to={serviceItem.path}
+                          className="block text-secondary-600 hover:text-primary-600 transition-colors py-2"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <div className="font-medium text-sm">{serviceItem.name}</div>
+                          <div className="text-xs text-secondary-500">{serviceItem.description}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+              
+              {/* Mobile CTA */}
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
+                className="mt-6 space-y-3"
               >
                 <Link
                   to="/contact"
-                  className="mt-8 inline-block bg-gradient-to-r from-primary-500 to-primary-700 text-white px-6 py-3 rounded-xl font-semibold self-start shadow-xl hover:shadow-2xl transition-all duration-300"
+                  className="block w-full bg-gradient-to-r from-primary-500 to-primary-700 text-white px-6 py-4 rounded-xl font-semibold text-center shadow-xl hover:shadow-2xl transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Get Quote
+                  Get Free Consultation
+                </Link>
+                <Link
+                  to="/services"
+                  className="block w-full border-2 border-primary-300 text-primary-700 px-6 py-4 rounded-xl font-semibold text-center hover:bg-primary-50 transition-all duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  View All Services
                 </Link>
               </motion.div>
             </div>

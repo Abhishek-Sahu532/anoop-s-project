@@ -18,6 +18,14 @@ import GSTServices from './pages/services/GSTServices';
 import IncomeTaxServices from './pages/services/IncomeTaxServices';
 import CompanyRegistration from './pages/services/CompanyRegistration';
 import ComplianceServices from './pages/services/ComplianceServices';
+import TaxAuditServices from './pages/services/TaxAuditServices';
+import TaxPlanningAdvisory from './pages/services/TaxPlanningAdvisory';
+import LLPRegistration from './pages/services/LLPRegistration';
+import PartnershipFirm from './pages/services/PartnershipFirm';
+import ROCFilingServices from './pages/services/ROCFilingServices';
+import LabourDepartmentServices from './pages/services/LabourDepartmentServices';
+import PFESICServices from './pages/services/PFESICServices';
+import StatutoryAuditServices from './pages/services/StatutoryAuditServices';
 
 function App() {
   return (
@@ -39,18 +47,26 @@ function App() {
 
         {/* Main Content */}
         <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/gst" element={<GSTServices />} />
-            <Route path="/services/income-tax" element={<IncomeTaxServices />} />
-            <Route path="/services/company-registration" element={<CompanyRegistration />} />
-            <Route path="/services/compliance" element={<ComplianceServices />} />
-            <Route path="/due-dates" element={<DueDates />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/gst" element={<GSTServices />} />
+          <Route path="/services/income-tax" element={<IncomeTaxServices />} />
+          <Route path="/services/company-registration" element={<CompanyRegistration />} />
+          <Route path="/services/compliance" element={<ComplianceServices />} />
+          <Route path="/services/tax-audit" element={<TaxAuditServices />} />
+          <Route path="/services/tax-planning" element={<TaxPlanningAdvisory />} />
+          <Route path="/services/llp-registration" element={<LLPRegistration />} />
+          <Route path="/services/partnership-firm" element={<PartnershipFirm />} />
+          <Route path="/services/roc-filing" element={<ROCFilingServices />} />
+          <Route path="/services/labour-department" element={<LabourDepartmentServices />} />
+          <Route path="/services/pf-esic" element={<PFESICServices />} />
+          <Route path="/services/statutory-audit" element={<StatutoryAuditServices />} />
+          <Route path="/due-dates" element={<DueDates />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
         </main>
 
         {/* Footer */}
