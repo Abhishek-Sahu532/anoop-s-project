@@ -303,7 +303,7 @@ const Contact = () => {
 
                 <motion.button
                   type="submit"
-                  className="w-full bg-professional-gradient text-white px-8 py-4 rounded-xl font-semibold shadow-glow hover:shadow-large transition-all duration-300 flex items-center justify-center"
+                  className="w-full bg-professional-gradient text-secondary-700 border border-1  border-primary-500  px-8 py-4 rounded-xl font-semibold shadow-glow hover:shadow-large transition-all duration-300 flex items-center justify-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -371,7 +371,7 @@ const Contact = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button 
-              className="bg-professional-gradient text-white px-8 py-4 rounded-xl font-semibold shadow-glow hover:shadow-large transition-all duration-300"
+             className="bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold hover:bg-primary-50 transition-all duration-300 shadow-lg"   
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
